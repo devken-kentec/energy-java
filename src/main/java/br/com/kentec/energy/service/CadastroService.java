@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import br.com.kentec.energy.domain.Cadastro;
 import br.com.kentec.energy.dto.CadastroRelatorioDTO;
@@ -29,6 +31,7 @@ public class CadastroService {
 	@Autowired
 	private CadastroRepository cr;
 	
+	
 	public Iterable<Cadastro> findAll(){
 		return cr.findAll();
 	}
@@ -47,6 +50,12 @@ public class CadastroService {
 		}
 		
 		return this.cadastroValido;
+	}
+	
+	
+	public Page<Cadastro> listarCadastro(Integer page, Integer size){
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return cr.findAll(pageRequest);
 	}
 	
 	public void create(Cadastro cadastro) {

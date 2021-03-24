@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import br.com.kentec.energy.domain.Cadastro;
 import br.com.kentec.energy.domain.FichaFinanceira;
@@ -37,6 +39,11 @@ public class FichaFinanciraService {
 	
 	public Iterable<FichaFinanceira> findAll(){
 		return ffr.findAll();
+	}
+	
+	public Page<FichaFinanceira> listarFichaFinanceira(Integer page, Integer size){
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return ffr.findAll(pageRequest);
 	}
 	
 	public List<ParcelaDTO> findByFichaFinanceiraParcela(Long fichaFinanceira) {

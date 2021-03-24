@@ -4,6 +4,7 @@ package br.com.kentec.energy.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,15 @@ public class CadastroController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Cadastro>> findById(@PathVariable("id") Long id){
 		return ResponseEntity.ok(cs.findById(id));
+	}
+	
+	@GetMapping("/cadastroPage")
+	public Page<Cadastro> cadastroPaginado(
+			@RequestParam(value="page", defaultValue = "0") Integer page, 
+			@RequestParam(value="size", defaultValue = "10") Integer size
+			){
+
+		return cs.listarCadastro(page, size);
 	}
 	
 	@PostMapping()

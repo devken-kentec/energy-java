@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,14 @@ public class FichaFinanceiraController {
 		return ResponseEntity.ok(ffs.findByAlunoId(alunoId));
 	}
 	
+	@GetMapping("/fichaFinanceiraPage")
+	public Page<FichaFinanceira> fichaFinanceiraPaginada(
+			@RequestParam(value="page", defaultValue = "0") Integer page, 
+			@RequestParam(value="size", defaultValue = "10") Integer size
+			){
+
+		return ffs.listarFichaFinanceira(page, size);
+	}
 	@GetMapping("parcela/{fichaFinanceira}")
 	public ResponseEntity<List<ParcelaDTO>> findByFichaFinanceiraParcela(@PathVariable("fichaFinanceira") Long fichaFinanceira){
 		return ResponseEntity.ok(ffs.findByFichaFinanceiraParcela(fichaFinanceira));

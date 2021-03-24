@@ -3,6 +3,8 @@ package br.com.kentec.energy.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -32,6 +34,11 @@ public class FichaTecnicaService {
 	
 	public Iterable<FichaTecnica> findByNome(String nome){
 		return ftr.findByNome("%" + nome + "%");
+	}
+	
+	public Page<FichaTecnica> listarFichaTecnica(Integer page, Integer size){
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return ftr.findAll(pageRequest);
 	}
 	
 	public Optional<FichaTecnicaDTO> findByFichaTecnicaAluno(Long id){
