@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.Part;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +15,8 @@ import br.com.kentec.energy.domain.Cadastro;
 import br.com.kentec.energy.dto.CadastroRelatorioDTO;
 import br.com.kentec.energy.repository.CadastroRepository;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -160,5 +165,23 @@ public class CadastroService {
 		
 	}
 	
+	public byte[] adicionarFoto(Part arquivo, Long id) {
+		
+		Optional<Cadastro> cad = cr.findById(id);
+		
+		return cad.map(c -> {
+			try {
+				InputStream is = arquivo.getInputStream();
+				byte[] bytes = new byte[(int) arquivo.getSize()];
+				IOUtils.readFully(is, bytes);
+				c.setFoto(bytes);
+				cr.save(c);
+				is.close();
+				return bytes;
+			} catch (IOException e) {
+				return null;
+			}
+		}).orElse(null);
+	}
 
 }

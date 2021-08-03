@@ -3,6 +3,8 @@ package br.com.kentec.energy.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.Part;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -80,6 +82,11 @@ public class CadastroController {
 		String msg = cs.cadastroReports(id);
 		System.out.println(msg);
 		return msg;
+	}
+	
+	@PutMapping("/arquivo/{id}")
+	public void adicionarFoto(@RequestParam("arquivo") Part arquivo, @PathVariable("id") Long id) {
+		cs.adicionarFoto(arquivo, id);
 	}
 	
 }

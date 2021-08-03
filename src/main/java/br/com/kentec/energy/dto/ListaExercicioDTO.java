@@ -11,6 +11,8 @@ public class ListaExercicioDTO {
 	private Long fichaTecnicaId;
 	private String statusLista;
 	private String nivel;
+	private String execucao;
+	private String detalhe;
 	private String tipo;
 	private String modalidade;
 	
@@ -23,8 +25,11 @@ public class ListaExercicioDTO {
 		this.diaTreino = lt.getDiaTreino();
 		this.nome = lt.getExercicio().getNome();
 		this.nivel = lt.getExercicio().getNivel();
+		this.execucao = lt.getExercicio().getExecucao();
+		this.detalhe = lt.getExercicio().getDetalhe();
 		this.tipo = lt.getExercicio().getTipo();
 		this.modalidade = lt.getExercicio().getModalidade();
+		this.exercicioId = lt.getExercicio().getId();
 	}
 	
 	public Long getId() {
@@ -98,13 +103,30 @@ public class ListaExercicioDTO {
 	public void setModalidade(String modalidade) {
 		this.modalidade = modalidade;
 	}
+	
+
+	public String getExecucao() {
+		return execucao;
+	}
+
+	public void setExecucao(String execucao) {
+		this.execucao = execucao;
+	}
+
+	public String getDetalhe() {
+		return detalhe;
+	}
+
+	public void setDetalhe(String detalhe) {
+		this.detalhe = detalhe;
+	}
 
 	@Override
 	public String toString() {
 		return "ListaExercicioDTO [id=" + id + ", nome=" + nome + ", diaTreino=" + diaTreino + ", exercicioId="
 				+ exercicioId + ", fichaTecnicaId=" + fichaTecnicaId + ", statusLista=" + statusLista + ", nivel="
-				+ nivel + ", tipo=" + tipo + ", modalidade=" + modalidade + "]";
+				+ nivel + ", execucao=" + execucao + ", detalhe=" + detalhe + ", tipo=" + tipo + ", modalidade="
+				+ modalidade + "]";
 	}
-	
 	
 }

@@ -11,7 +11,7 @@ public class Cadastro implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", nullable = true, length = 11)
+	@Column(name="id", nullable = false, length = 11)
 	private Long id;
 	
 	@Column(name="nome", nullable = true, length = 50)
@@ -53,6 +53,10 @@ public class Cadastro implements Serializable {
 	
 	@Column(name="status_mat", nullable = true, length = 15)
 	private String statusMatricula;
+	
+	@Column
+	@Lob
+	public byte[] foto;
 	
 	public Cadastro() {
 		
@@ -168,6 +172,14 @@ public class Cadastro implements Serializable {
 
 	public void setStatusMatricula(String statusMatricula) {
 		this.statusMatricula = statusMatricula;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 	
 }

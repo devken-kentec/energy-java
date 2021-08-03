@@ -27,6 +27,12 @@ public class Exercicio implements Serializable {
 	@Column(name="funcao", nullable = true, length = 120)
 	private String funcao;
 	
+	@Column(name="execucao", nullable = true, length = 15)
+	private String execucao;
+	
+	@Column(name="detalhe", nullable = true, length = 50)
+	private String detalhe;
+	
 	@Column(name="descricao", nullable = true, length = 500)
 	private String descricao;
 	
@@ -82,6 +88,22 @@ public class Exercicio implements Serializable {
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
+	
+	public String getExecucao() {
+		return execucao;
+	}
+
+	public void setExecucao(String execucao) {
+		this.execucao = execucao;
+	}
+
+	public String getDetalhe() {
+		return detalhe;
+	}
+
+	public void setDetalhe(String detalhe) {
+		this.detalhe = detalhe;
+	}
 
 	public String getDescricao() {
 		return descricao;
@@ -114,5 +136,13 @@ public class Exercicio implements Serializable {
 	public void setStatusExercicio(String statusExercicio) {
 		this.statusExercicio = statusExercicio;
 	}
+
+	@Override
+	public String toString() {
+		return "Exercicio [id=" + id + ", nome=" + nome + ", nivel=" + nivel + ", tipo=" + tipo + ", funcao=" + funcao
+				+ ", execucao=" + execucao + ", detalhe=" + detalhe + ", descricao=" + descricao + ", imagem=" + imagem
+				+ ", modalidade=" + modalidade + ", statusExercicio=" + statusExercicio + "]";
+	}
+	
 	
 }
