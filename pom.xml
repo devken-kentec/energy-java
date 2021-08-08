@@ -13,9 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>energy</name>
-	<description>Gestão de academias</description>
+	<description>Sua academia online</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>13</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,11 +39,6 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>	
-		<dependency>
-			<groupId>net.sf.jasperreports</groupId>
-			<artifactId>jasperreports</artifactId>
-			<version>6.4.0</version>
-		</dependency>
 		<dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>

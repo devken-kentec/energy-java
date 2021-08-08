@@ -96,7 +96,6 @@ public class FichaFinanceiraController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody FichaFinanceiraDTO fichaFinanceira) {
 		ffs.create(fichaFinanceira);
-		System.out.println("C " + fichaFinanceira);
 	}
 	
 	@PutMapping()
@@ -123,10 +122,10 @@ public class FichaFinanceiraController {
 		ffs.delete(id);
 	}
 	
-	@GetMapping("/relparc/{id}")
+/*	@GetMapping("/relparc/{id}")
 	public String printParcela(@PathVariable("id") Long id) {
 		String msg = ffs.ParcelaListReports();
 		System.out.println(msg);
 		return msg;
-	}
+	}*/
 }

@@ -78,7 +78,7 @@ public class CadastroController {
 		cs.mudarStatusCadastro(id);
 	}
 	
-	@GetMapping("/relcadList")
+/*	@GetMapping("/relcadList")
 	public String printCadastroList() {
 		String msg = cs.cadastroListReports();
 		System.out.println(msg);
@@ -90,7 +90,7 @@ public class CadastroController {
 		String msg = cs.cadastroReports(id);
 		System.out.println(msg);
 		return msg;
-	}
+	}*/
 	
 	@PutMapping("/arquivo/{id}")
 	public void adicionarFoto(@RequestParam("arquivo") Part arquivo, @PathVariable("id") Long id) {

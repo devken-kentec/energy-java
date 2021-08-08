@@ -1,9 +1,9 @@
 package br.com.kentec.energy.service;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
+//import java.time.LocalDateTime;
+//import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+//import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ import br.com.kentec.energy.dto.ParcelaDTO;
 import br.com.kentec.energy.repository.CadastroRepository;
 import br.com.kentec.energy.repository.FichaFinanceiraRepository;
 import br.com.kentec.energy.repository.ParcelaRepository;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+//import net.sf.jasperreports.engine.JasperCompileManager;
+//import net.sf.jasperreports.engine.JasperExportManager;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.engine.JasperReport;
+//import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Service
 public class FichaFinanciraService {
@@ -146,7 +146,7 @@ public class FichaFinanciraService {
 		}
 	}
 	
-	public String ParcelaListReports() {
+/*	public String ParcelaListReports() {
 		
 		List<ParcelaDTO> parc = pr.findAll().stream().map(ParcelaDTO::new).collect(Collectors.toList());
 		
@@ -177,5 +177,5 @@ public class FichaFinanciraService {
 			e.printStackTrace();
 			return e.getMessage();
 		}
-	}
+	}*/
 }

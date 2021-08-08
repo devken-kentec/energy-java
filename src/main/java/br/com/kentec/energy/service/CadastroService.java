@@ -1,8 +1,8 @@
 package br.com.kentec.energy.service;
 
-import java.util.List;
+//import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
 import javax.servlet.http.Part;
 
@@ -12,20 +12,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import br.com.kentec.energy.domain.Cadastro;
-import br.com.kentec.energy.dto.CadastroRelatorioDTO;
+//import br.com.kentec.energy.dto.CadastroRelatorioDTO;
 import br.com.kentec.energy.repository.CadastroRepository;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+//import net.sf.jasperreports.engine.JasperCompileManager;
+//import net.sf.jasperreports.engine.JasperExportManager;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.engine.JasperReport;
+//import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 
 @Service
@@ -104,7 +104,7 @@ public class CadastroService {
 	
 	
 
-	public String cadastroListReports() {
+/*	public String cadastroListReports() {
 		
 		List<CadastroRelatorioDTO> cad = cr.findAll().stream().map(CadastroRelatorioDTO::new).collect(Collectors.toList());
 		
@@ -134,9 +134,9 @@ public class CadastroService {
 			e.printStackTrace();
 			return e.getMessage();
 		}
-	}
+	}*/
 	
-	public String cadastroReports(Long id) {
+/*	public String cadastroReports(Long id) {
 		
 		List<CadastroRelatorioDTO> cad = cr.findByIdc(id).stream().map(CadastroRelatorioDTO::new).collect(Collectors.toList());
 		
@@ -168,7 +168,7 @@ public class CadastroService {
 			return e.getMessage();
 		}
 		
-	}
+	}*/
 	
 	public byte[] adicionarFoto(Part arquivo, Long id) {
 		

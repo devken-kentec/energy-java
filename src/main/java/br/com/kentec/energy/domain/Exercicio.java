@@ -15,7 +15,7 @@ public class Exercicio implements Serializable {
 	@Column(name="id", nullable = true, length = 11)
 	private Long id;
 	
-	@Column(name="nome", nullable = true, length = 30)
+	@Column(name="nome", nullable = true, length = 100)
 	private String nome;
 	
 	@Column(name="nivel", nullable = true, length = 15)
@@ -30,7 +30,7 @@ public class Exercicio implements Serializable {
 	@Column(name="execucao", nullable = true, length = 15)
 	private String execucao;
 	
-	@Column(name="detalhe", nullable = true, length = 50)
+	@Column(name="detalhe", nullable = true, length = 100)
 	private String detalhe;
 	
 	@Column(name="descricao", nullable = true, length = 500)
