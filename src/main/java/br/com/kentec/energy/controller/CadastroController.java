@@ -23,10 +23,18 @@ public class CadastroController {
 	@Autowired
 	private CadastroService cs;
 	
+	@GetMapping("/count")
+	public ResponseEntity<Long> startServer(){
+		System.out.println(cs.startServer());
+		return ResponseEntity.ok(cs.startServer());
+	}
+	
+	
 	@GetMapping("/listar")
 	public ResponseEntity<Iterable<Cadastro>> findAll(){
 		return ResponseEntity.ok(cs.findAll());
 	}
+	
 	@GetMapping("/logar")
 	public ResponseEntity<Cadastro> findByLoginSenha(@RequestParam("login") Long login, @RequestParam("senha") String senha )  {
 		return ResponseEntity.ok(cs.findByLoginSenha(login, senha));
@@ -49,7 +57,7 @@ public class CadastroController {
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody Cadastro cadastro) {
-		cs.create(cadastro);
+		 cs.create(cadastro);
 	}
 	
 	@PutMapping("/senha")

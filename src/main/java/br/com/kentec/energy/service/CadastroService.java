@@ -31,10 +31,15 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @Service
 public class CadastroService {
 	
-	Cadastro cadastroValido;
+	private Cadastro cadastroValido;
 	
 	@Autowired
 	private CadastroRepository cr;
+	
+	
+	public Long startServer() {
+		return cr.count();
+	}
 	
 	
 	public Iterable<Cadastro> findAll(){
