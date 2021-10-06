@@ -1,11 +1,7 @@
 package br.com.kentec.energy.dto;
 
-
-
 import br.com.kentec.energy.domain.Cadastro;
 import br.com.kentec.energy.utils.Utilitarios;
-
-
 
 public class CadastroRelatorioDTO {
 

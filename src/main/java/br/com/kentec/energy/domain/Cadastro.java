@@ -33,8 +33,14 @@ public class Cadastro implements Serializable {
 	@Column(name="fone_cel2", nullable = true, length = 20)
 	private String foneCel2;
 	
+	@Column(name="cep", nullable = true, length = 8)
+	private String cep;
+	
 	@Column(name="endereco", nullable = true, length = 100)
 	private String endereco;
+	
+	@Column(name="complemento", nullable = true, length = 100)
+	private String complemento;
 	
 	@Column(name="sexo", nullable = true, length = 15)
 	private String sexo;
@@ -118,12 +124,28 @@ public class Cadastro implements Serializable {
 		this.foneCel2 = foneCel2;
 	}
 
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
 	public String getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 	public String getSexo() {

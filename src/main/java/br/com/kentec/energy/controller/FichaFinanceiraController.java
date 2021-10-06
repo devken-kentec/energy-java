@@ -54,10 +54,12 @@ public class FichaFinanceiraController {
 
 		return ffs.listarFichaFinanceira(page, size);
 	}
+	
 	@GetMapping("parcela/{fichaFinanceira}")
 	public ResponseEntity<List<ParcelaDTO>> findByFichaFinanceiraParcela(@PathVariable("fichaFinanceira") Long fichaFinanceira){
 		return ResponseEntity.ok(ffs.findByFichaFinanceiraParcela(fichaFinanceira));
 	}
+
 	
 	@GetMapping("/buscar/aluno")
 	public ResponseEntity<List<ParcelaDTO>> findByRelPeriodoStatusPagamentoAluno(

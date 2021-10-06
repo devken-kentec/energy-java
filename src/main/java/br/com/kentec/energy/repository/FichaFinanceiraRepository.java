@@ -20,4 +20,5 @@ public interface FichaFinanceiraRepository extends JpaRepository<FichaFinanceira
 			+ "JOIN ff.cadastro c "
 			+ "WHERE c.id = :alunoId ")
 	public Optional<FichaFinanceira> findByAlunoId(@Param("alunoId") Long alunoId);
+	
 }
