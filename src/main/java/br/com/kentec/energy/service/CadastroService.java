@@ -36,14 +36,16 @@ public class CadastroService {
 	@Autowired
 	private CadastroRepository cr;
 	
-	
 	public Long startServer() {
 		return cr.count();
 	}
 	
-	
 	public Iterable<Cadastro> findAll(){
 		return cr.findAll();
+	}
+	
+	public Iterable<Cadastro> findByNome(String nome){
+		return cr.findByNome("%" + nome + "%");
 	}
 	
 	public Optional<Cadastro> findById(Long id){
@@ -54,14 +56,11 @@ public class CadastroService {
 		
 		Cadastro cadastro = cr.findByLoginSenha(login, senha);
 		
-		if(cadastro.getId().equals(login) && cadastro.getSenha().equals(senha)) {
-			
+		if(cadastro.getId().equals(login) && cadastro.getSenha().equals(senha)) {	
 			this.cadastroValido = cadastro;
-		}
-		
+		}	
 		return this.cadastroValido;
 	}
-	
 	
 	public Page<Cadastro> listarCadastro(Integer page, Integer size){
 		PageRequest pageRequest = PageRequest.of(page, size);

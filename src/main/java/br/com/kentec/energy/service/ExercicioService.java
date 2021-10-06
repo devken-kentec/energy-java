@@ -19,6 +19,10 @@ public class ExercicioService {
 		return er.findAll();
 	}
 	
+	public Iterable<Exercicio> findByNome(String nome){
+		return er.findByNome("%" + nome +"%");
+	}
+	
 	public Optional<Exercicio> findById(Long id){
 		return er.findById(id);
 	}

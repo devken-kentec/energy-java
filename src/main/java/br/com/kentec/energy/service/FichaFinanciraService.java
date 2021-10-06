@@ -70,6 +70,9 @@ public class FichaFinanciraService {
 		return ffr.findByAlunoId(alunoId).map(FichaFinanceiraDTO::new);
 	}
 	
+	public List<FichaFinanceiraDTO> findByNome(String nome){
+		return ffr.findByNome("%"+ nome + "%").stream().map(FichaFinanceiraDTO::new).collect(Collectors.toList());
+	}
 	public List<FichaFinanceiraDTO> findByFichaFinancira(){
 		return ffr.findByFichaFinanceira().stream().map(FichaFinanceiraDTO::new).collect(Collectors.toList());
 	}

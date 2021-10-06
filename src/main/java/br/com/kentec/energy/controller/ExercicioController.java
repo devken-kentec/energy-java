@@ -40,6 +40,12 @@ public class ExercicioController {
 		return ResponseEntity.ok(es.findAll());
 	}
 	
+	@GetMapping("/filtrar")
+	public ResponseEntity<Iterable<Exercicio>> findByNome(
+						@RequestParam(value ="nome", required = false, defaultValue="") String nome){
+		return ResponseEntity.ok(es.findByNome(nome));
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Exercicio>> findById(@PathVariable("id") Long id){
 		return ResponseEntity.ok(es.findById(id));

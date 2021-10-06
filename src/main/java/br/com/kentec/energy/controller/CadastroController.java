@@ -35,6 +35,12 @@ public class CadastroController {
 		return ResponseEntity.ok(cs.findAll());
 	}
 	
+	@GetMapping("/filtrar")
+	public ResponseEntity<Iterable<Cadastro>> findByNome(
+						@RequestParam(value ="nome", required = false, defaultValue="") String nome){
+		return ResponseEntity.ok(cs.findByNome(nome));
+	}
+	
 	@GetMapping("/logar")
 	public ResponseEntity<Cadastro> findByLoginSenha(@RequestParam("login") Long login, @RequestParam("senha") String senha )  {
 		return ResponseEntity.ok(cs.findByLoginSenha(login, senha));

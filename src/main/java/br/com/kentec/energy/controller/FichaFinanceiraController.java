@@ -89,6 +89,12 @@ public class FichaFinanceiraController {
 		return ResponseEntity.ok(ffs.findByRelPeriodoStatusPagamentoTipo(dataInicial ,  dataFinal  ,  tipoPagamento ));
 	}
 	
+	@GetMapping("/filtrar")
+	public ResponseEntity<Iterable<FichaFinanceiraDTO>> findByNome(
+						@RequestParam(value ="nome", required = false, defaultValue="") String nome){
+		return ResponseEntity.ok(ffs.findByNome(nome));
+	}
+	
 	@GetMapping("/listar")
 	private ResponseEntity<List<FichaFinanceiraDTO>> findByFichaFinanceira(){
 		return ResponseEntity.ok(ffs.findByFichaFinancira());

@@ -21,4 +21,9 @@ public interface FichaFinanceiraRepository extends JpaRepository<FichaFinanceira
 			+ "WHERE c.id = :alunoId ")
 	public Optional<FichaFinanceira> findByAlunoId(@Param("alunoId") Long alunoId);
 	
+	@Query("SELECT ff FROM FichaFinanceira ff "
+			+ "JOIN ff.cadastro c "
+			+ "WHERE UPPER(c.nome) LIKE (:nome) ")
+	public List<FichaFinanceira> findByNome(@Param("nome") String nome);
+	
 }
