@@ -1,5 +1,7 @@
 package br.com.kentec.energy.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,4 +16,7 @@ public interface CadastroRepository extends JpaRepository<Cadastro, Long> {
 	
 	@Query("SELECT c FROM Cadastro c WHERE UPPER(c.nome) LIKE UPPER(:nome) ")
 	public Iterable<Cadastro> findByNome(@Param("nome") String nome);
+	
+	@Query("SELECT c FROM Cadastro c WHERE UPPER(c.login) LIKE  UPPER(:login) ")
+	public Optional<Cadastro> findByLogin(@Param("login") String login);
 }

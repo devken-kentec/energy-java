@@ -3,22 +3,25 @@ package br.com.kentec.energy.service;
 //import java.util.List;
 import java.util.Optional;
 //import java.util.stream.Collectors;
-
 import javax.servlet.http.Part;
-
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import br.com.kentec.energy.domain.Cadastro;
 //import br.com.kentec.energy.dto.CadastroRelatorioDTO;
 import br.com.kentec.energy.repository.CadastroRepository;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 //import java.util.HashMap;
 //import java.util.Map;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 //import net.sf.jasperreports.engine.JasperCompileManager;
 //import net.sf.jasperreports.engine.JasperExportManager;
@@ -52,6 +55,10 @@ public class CadastroService {
 		return cr.findById(id);
 	}
 	
+	public Optional<Cadastro> findByLogin(String login){
+		return cr.findByLogin(login);
+	}
+	
 	public Cadastro findByLoginSenha(Long login, String senha) {
 		
 		Cadastro cadastro = cr.findByLoginSenha(login, senha);
@@ -67,15 +74,26 @@ public class CadastroService {
 		return cr.findAll(pageRequest);
 	}
 	
+	//Alterar para encoder
 	public void create(Cadastro cadastro) {
-		cr.save(cadastro);
+		
+		Optional<Cadastro> cad = cr.findByLogin(cadastro.getLogin());
+		
+		if(cad.isPresent()) {
+			cr.exists(null);
+		} else {
+			cadastro.setSenha(passwordEncoder(cadastro.getSenha()));
+			cr.save(cadastro);
+		}
 	}
 	
 	public void update(Cadastro cadastro) {
+		
 		Optional<Cadastro> c = cr.findById(cadastro.getId());
 		
 		if(c.isPresent()) {
-			cr.save(cadastro);	
+			c.get().setSenha(passwordEncoder(cadastro.getSenha()));
+			cr.save(cadastro);
 		}
 	}
 	
@@ -86,7 +104,7 @@ public class CadastroService {
 			c.get().setTipoUser(cadastro.getTipoUser());
 			c.get().setStatusMatricula(cadastro.getStatusMatricula());
 			c.get().setLogin(cadastro.getLogin());
-			c.get().setSenha(cadastro.getSenha());
+			c.get().setSenha(passwordEncoder(cadastro.getSenha()));
 			
 			cr.save(c.get());
 		}
@@ -101,6 +119,10 @@ public class CadastroService {
 		}
 	}
 	
+	public String passwordEncoder(String senha) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(senha); 
+	}
 	
 
 /*	public String cadastroListReports() {
@@ -187,5 +209,28 @@ public class CadastroService {
 			}
 		}).orElse(null);
 	}
+	
+	
+	public String buscarCep(String cep) {
+        String json;
+
+        try {
+            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
+            URLConnection urlConnection = url.openConnection();
+            InputStream is = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            StringBuilder jsonSb = new StringBuilder();
+
+            br.lines().forEach(l -> jsonSb.append(l.trim()));
+
+            json = jsonSb.toString();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        
+        return json;
+    }
 
 }

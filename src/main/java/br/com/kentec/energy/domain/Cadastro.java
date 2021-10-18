@@ -1,7 +1,9 @@
 package br.com.kentec.energy.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -48,13 +50,13 @@ public class Cadastro implements Serializable {
 	@Column(name="email", nullable = true, length = 60)
 	private String email;
 	
-	@Column(name="login", nullable = true, length = 20)
+	@Column(name="login", unique=true, nullable = true, length = 20)
 	private String login;
 	
 	@Column(name="tipo_user", nullable = true, length = 50)
 	private String tipoUser;
 	
-	@Column(name="senha", nullable = true, length = 20)
+	@Column(name="senha", nullable = true, length = 100)
 	private String senha;
 	
 	@Column(name="status_mat", nullable = true, length = 15)
@@ -202,6 +204,6 @@ public class Cadastro implements Serializable {
 
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
-	}
+	}	
 	
 }

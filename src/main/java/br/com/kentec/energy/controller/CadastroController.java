@@ -1,23 +1,20 @@
 package br.com.kentec.energy.controller;
 
-
 import java.util.Optional;
-
 import javax.servlet.http.Part;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
 import br.com.kentec.energy.domain.Cadastro;
 import br.com.kentec.energy.service.CadastroService;
 
-@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("energy/api/cadastro")
+@RequestMapping("/energy/api/cadastro")
 public class CadastroController {
 	
 	@Autowired
@@ -51,6 +48,11 @@ public class CadastroController {
 		return ResponseEntity.ok(cs.findById(id));
 	}
 	
+	@GetMapping("/autenticar/{login}")
+	public ResponseEntity<Optional<Cadastro>> findByLogin(@PathVariable("login") String login){
+		return ResponseEntity.ok(cs.findByLogin(login));
+	}
+	
 	@GetMapping("/cadastroPage")
 	public Page<Cadastro> cadastroPaginado(
 			@RequestParam(value="page", defaultValue = "0") Integer page, 
@@ -62,7 +64,7 @@ public class CadastroController {
 	
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
-	public void create(@RequestBody Cadastro cadastro) {
+	public void create(@RequestBody @Validated Cadastro cadastro) {
 		 cs.create(cadastro);
 	}
 	
@@ -102,6 +104,11 @@ public class CadastroController {
 	public void adicionarFoto(@RequestParam("arquivo") Part arquivo, @PathVariable("id") Long id) {
 		cs.adicionarFoto(arquivo, id);
 	}
+	
+	@GetMapping("/buscarCep/{cep}")
+	public String buscarCep(@PathVariable("cep") String cep) {
+		return cs.buscarCep(cep);
+    }
 	
 }
 
