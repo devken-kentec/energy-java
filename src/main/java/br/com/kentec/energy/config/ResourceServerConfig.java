@@ -20,7 +20,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 						"/energy/api/fichaFinanceira/**",
 						"/energy/api/fichaTecnica/**",
 						"/energy/api/frequencia/**",
-						"/energy/api/listaExercicio/**").authenticated()
+						"/energy/api/listaExercicio/**",
+						"/energy/api/livroCaixaEntrada/**").authenticated()
 				.anyRequest().denyAll();
 	}
 }
