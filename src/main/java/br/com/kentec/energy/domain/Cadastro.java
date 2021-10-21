@@ -16,8 +16,11 @@ public class Cadastro implements Serializable {
 	@Column(name="id", nullable = false, length = 11)
 	private Long id;
 	
-	@Column(name="nome", nullable = true, length = 50)
+	@Column(name="nome", nullable = true, length = 100)
 	private String nome;
+	
+	@Column(name="responsavel", nullable = true, length = 150)
+	private String responsavel;
 	
 	@Column(name="cpf", nullable = true, length = 20)
 	private String cpf;
@@ -84,6 +87,14 @@ public class Cadastro implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
 	}
 
 	public String getCpf() {
