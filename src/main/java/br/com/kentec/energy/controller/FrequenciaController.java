@@ -30,6 +30,17 @@ public class FrequenciaController {
 		return fs.listarFrequenciaAluno(alunoId, dataInicial, dataFinal);
 	} 
 	
+	@GetMapping("/frequenciaDia")
+	private List<FrequenciaDTO> listarFrequenciaDia(){
+		return fs.listarFrequenciaDia();
+	}
+	
+	@GetMapping("/frequenciaDia/{id}/{statusTreino}")
+	public void atualizarFrequencia(@PathVariable("id") Long id, 
+									@PathVariable("statusTreino") Boolean statusTreino) {
+		fs.atualizarFrequencia(id, statusTreino);
+	}
+	
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	public void create(@RequestBody FrequenciaDTO frequencia) {

@@ -26,4 +26,9 @@ public interface FrequenciaRepository extends JpaRepository<Frequencia, Long>{
 	public List<Frequencia> listarFrequenciaAluno(@Param("alunoId") Long alunoId,
 												  @Param("dataInicial") String dataInicial,
 												  @Param("dataFinal") String dataFinal);
+	
+	@Query("SELECT f FROM Frequencia f "
+			+ "JOIN f.cadastro c "
+			+ "WHERE f.dataMes = :data AND f.statusTreino = true ")
+	public List<Frequencia> listarFrequenciaDia(@Param("data") String data);
 }

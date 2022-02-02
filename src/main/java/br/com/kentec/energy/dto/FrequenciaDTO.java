@@ -1,5 +1,6 @@
 package br.com.kentec.energy.dto;
 
+import br.com.kentec.energy.domain.Frequencia;
 
 public class FrequenciaDTO {
 	
@@ -9,9 +10,20 @@ public class FrequenciaDTO {
 	private String horaDia;
 	private String statusFrequencia;
 	private Long AlunoId;
+	private String nome;
 	
 	public FrequenciaDTO() {
 		
+	}
+	
+	public FrequenciaDTO(Frequencia freq) {
+		this.id = freq.getId();
+		this.diaSemana = freq.getDiaSemana();
+		this.dataMes = freq.getDataMes();
+		this.horaDia = freq.getHoraDia();
+		this.statusFrequencia = freq.getStatusFrequencia();
+		this.AlunoId = freq.getCadastro().getId();
+		this.nome = freq.getCadastro().getNome();
 	}
 
 	public Long getId() {
@@ -62,9 +74,17 @@ public class FrequenciaDTO {
 		AlunoId = alunoId;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	@Override
 	public String toString() {
 		return "FrequenciaDTO [id=" + id + ", diaSemana=" + diaSemana + ", dataMes=" + dataMes + ", horaDia=" + horaDia
-				+ ", statusFrequencia=" + statusFrequencia + ", AlunoId=" + AlunoId + "]";
+				+ ", statusFrequencia=" + statusFrequencia + ", AlunoId=" + AlunoId + ", nome=" + nome + "]";
 	}
 }

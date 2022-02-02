@@ -27,6 +27,9 @@ public class Frequencia implements Serializable {
 	@Column(name="status_frequencia", nullable = true, length = 10)
 	private String statusFrequencia;
 	
+	@Column(name="status_treino", nullable = true, length = 10)
+	private Boolean statusTreino;
+	
 	@ManyToOne
 	@JoinColumn(name = "cadastro_id", nullable = true)
 	private Cadastro cadastro = new Cadastro();
@@ -75,6 +78,14 @@ public class Frequencia implements Serializable {
 		this.statusFrequencia = statusFrequencia;
 	}
 
+	public Boolean getStatusTreino() {
+		return statusTreino;
+	}
+
+	public void setStatusTreino(Boolean statusTreino) {
+		this.statusTreino = statusTreino;
+	}
+
 	public Cadastro getCadastro() {
 		return cadastro;
 	}
@@ -82,4 +93,12 @@ public class Frequencia implements Serializable {
 	public void setCadastro(Cadastro cadastro) {
 		this.cadastro = cadastro;
 	}
+
+	@Override
+	public String toString() {
+		return "Frequencia [id=" + id + ", diaSemana=" + diaSemana + ", dataMes=" + dataMes + ", horaDia=" + horaDia
+				+ ", statusFrequencia=" + statusFrequencia + ", statusTreino=" + statusTreino + ", cadastro=" + cadastro
+				+ "]";
+	}
+	
 }

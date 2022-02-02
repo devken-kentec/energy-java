@@ -101,6 +101,7 @@ public class CadastroController {
 	}*/
 	
 	@PutMapping("/arquivo/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void adicionarFoto(@RequestParam("arquivo") Part arquivo, @PathVariable("id") Long id) {
 		cs.adicionarFoto(arquivo, id);
 	}
