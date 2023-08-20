@@ -58,7 +58,6 @@ public class CadastroController {
 			@RequestParam(value="page", defaultValue = "0") Integer page, 
 			@RequestParam(value="size", defaultValue = "10") Integer size
 			){
-
 		return cs.listarCadastro(page, size);
 	}
 	

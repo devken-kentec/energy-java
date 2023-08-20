@@ -14,9 +14,8 @@ public interface CadastroRepository extends JpaRepository<Cadastro, Long> {
 	@Query("SELECT c FROM Cadastro c WHERE c.id = :login AND c.senha = :senha AND c.statusMatricula = 'Ativo' ")
 	public Cadastro findByLoginSenha(@Param("login") Long login, @Param("senha") String senha);
 	
-	@Query("SELECT c FROM Cadastro c WHERE UPPER(c.nome) LIKE UPPER(:nome) ")
+	@Query("SELECT c FROM Cadastro c WHERE UPPER(c.nome) LIKE UPPER(:nome) ") //or :nome is null
 	public Iterable<Cadastro> findByNome(@Param("nome") String nome);
 	
-	@Query("SELECT c FROM Cadastro c WHERE UPPER(c.login) LIKE  UPPER(:login) ")
 	public Optional<Cadastro> findByLogin(@Param("login") String login);
 }

@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+//import org.springframework.web.client.RestTemplate;
+
 import br.com.kentec.energy.domain.Cadastro;
 //import br.com.kentec.energy.dto.CadastroRelatorioDTO;
 import br.com.kentec.energy.repository.CadastroRepository;
@@ -213,23 +215,18 @@ public class CadastroService {
 	
 	public String buscarCep(String cep) {
         String json;
-
+        //RestTemplate res = new RestTemplate();
         try {
             URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
             URLConnection urlConnection = url.openConnection();
             InputStream is = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
             StringBuilder jsonSb = new StringBuilder();
-
             br.lines().forEach(l -> jsonSb.append(l.trim()));
-
             json = jsonSb.toString();
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        
         return json;
     }
 

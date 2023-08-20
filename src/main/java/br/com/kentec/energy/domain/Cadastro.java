@@ -216,5 +216,4 @@ public class Cadastro implements Serializable {
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}	
-	
 }

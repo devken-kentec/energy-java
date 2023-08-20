@@ -1,4 +1,4 @@
-package br.com.kentec.energy.repository;
+ package br.com.kentec.energy.repository;
 
 import java.util.List;
 

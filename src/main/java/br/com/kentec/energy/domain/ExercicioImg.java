@@ -1,3 +1,4 @@
+
 package br.com.kentec.energy.domain;
 
 import java.io.Serializable;

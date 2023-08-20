@@ -2,6 +2,7 @@ package br.com.kentec.energy.utils;
 
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -82,4 +83,6 @@ public class Utilitarios {
 		}
 		
 	}
+	
+
 }
