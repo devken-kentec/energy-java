@@ -13,7 +13,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/energy/api/cadastro/count").permitAll()
+				.antMatchers("/energy/api/cadastro/count",
+						     "/energy/api/mobile/**").permitAll()
 				.antMatchers(
 						"/energy/api/cadastro/**",
 						"/energy/api/exercicio/**", 

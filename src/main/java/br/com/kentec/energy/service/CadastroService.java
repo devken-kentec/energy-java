@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 //import org.springframework.web.client.RestTemplate;
 
 import br.com.kentec.energy.domain.Cadastro;
+import br.com.kentec.energy.dto.UserMobileDTO;
 //import br.com.kentec.energy.dto.CadastroRelatorioDTO;
 import br.com.kentec.energy.repository.CadastroRepository;
 
@@ -71,6 +72,11 @@ public class CadastroService {
 		return this.cadastroValido;
 	}
 	
+	public Optional<Cadastro> findByLoginMoblie(UserMobileDTO user) {
+		Optional<Cadastro> userValid = cr.findByLoginMoblie(user.getLogin(), user.getId());
+		return userValid;
+	}
+	
 	public Page<Cadastro> listarCadastro(Integer page, Integer size){
 		PageRequest pageRequest = PageRequest.of(page, size);
 		return cr.findAll(pageRequest);
@@ -90,7 +96,7 @@ public class CadastroService {
 	}
 	
 	public void update(Cadastro cadastro) {
-		
+		cadastro.setValidacaoMobile(true);
 		Optional<Cadastro> c = cr.findById(cadastro.getId());
 		
 		if(c.isPresent()) {

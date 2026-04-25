@@ -65,6 +65,9 @@ public class Cadastro implements Serializable {
 	@Column(name="status_mat", nullable = true, length = 15)
 	private String statusMatricula;
 	
+	@Column(name="validacao_mobile", nullable = false)
+	private Boolean validacaoMobile = false;
+	
 	@Column
 	@Lob
 	public byte[] foto;
@@ -207,6 +210,14 @@ public class Cadastro implements Serializable {
 
 	public void setStatusMatricula(String statusMatricula) {
 		this.statusMatricula = statusMatricula;
+	}
+
+	public Boolean getValidacaoMobile() {
+		return validacaoMobile;
+	}
+
+	public void setValidacaoMobile(Boolean validacaoMobile) {
+		this.validacaoMobile = validacaoMobile;
 	}
 
 	public byte[] getFoto() {
